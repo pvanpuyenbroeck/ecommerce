@@ -1,16 +1,26 @@
 import React from 'react';
 import Image from "next/image";
+import Link from 'next/link';
+import styles from './imageboardElement.module.css'
 
 
- const imageboardElement = (props) => {
-
+ const imageboardElement = ({imageProps}) => {
+    console.log(imageProps);
     return(
-        <div>
+        <Link href={imageProps.params.id}>
+        <div className={styles.picture}>
             <Image
-                src={props.imageSource}
-                alt={props.imageDesc}
+                src={'/img/furniture/' + imageProps.params.imgsrc}
+                alt={imageProps.params.description}
+                layout='fill'
+                objectFit='cover'
+                quality='50'
             />
+            <div className={styles.description}>
+                <div>{imageProps.params.name}</div>
+            </div>
         </div>
+        </Link>
     )
 }
 

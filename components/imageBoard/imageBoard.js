@@ -1,39 +1,21 @@
-import React from 'react'
 import ImageElement from './imageboardElement/imageboardElement';
-import {getAllfurnitureIds} from '../../lib/items';
+import styles from './imageBoard.module.css'
 
 
 
-export default function imageBoard(){
-    const images = {
-
-    }
-
+export default function imageBoard({images}){
+    console.log(images);
     return(
-        <div>  
-            {/* {getAllfurnitureIds()} */}
-            test
+        <div className={styles.imageContainer}>  
+            {images.map(image => {
+                return(
+                    <ImageElement 
+                        imageProps={image}
+                    />
+                )
+            })}
+            
         </div>
     )
 }
 
-export async function getStaticPaths() {
-    const paths = await getAllfurnitureIds();
-    console.log(paths);
-    return {
-        paths,
-        fallback: false,
-    };
-}
-
-export async function getStaticProps({ params }) {
-    // const postData = await getPostData(params.id);
-    const postData = {
-        test: "test",
-    };
-    return {
-        props: {
-            postData,
-        },
-    };
-}
