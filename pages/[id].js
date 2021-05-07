@@ -1,5 +1,7 @@
 import Layout from '../components/Layout'
 import {getAllFurnitureIds, getFurnitureData} from '../lib/furniture'
+import styles from '../styles/furnitureStyle.module.css'
+import Image from 'next/image'
 
 export async function getStaticPaths() {
     const paths = getAllFurnitureIds()
@@ -20,6 +22,24 @@ export async function getStaticPaths() {
 
 export default function furnitureDetails({postData}){
     return <Layout>
-        {postData.name}
+        <div>
+            
+        </div>
+        <div className={styles.furnitureContainer}>
+            <div className={styles.fullImage}>
+                <Image
+                    src={'/img/furniture/' + postData.imgsrc}
+                    alt={postData.name}
+                    layout='fill'
+                    objectFit='cover'
+                    quality='50'
+                />
+            </div>
+            <div class={styles.furnitureInfo}>
+                <div className={styles.name}>{postData.name}</div>
+                <div className={styles.description}>{postData.description}</div>
+                <div className={styles.price}>{'€' + postData.price}</div>
+            </div>
+        </div>
     </Layout>
 } 

@@ -5,7 +5,6 @@ import styles from './imageboardElement.module.css'
 
 
  const imageboardElement = ({imageProps}) => {
-    console.log(imageProps);
     return(
         <Link href={imageProps.params.id}>
         <div className={styles.picture}>
@@ -14,7 +13,6 @@ import styles from './imageboardElement.module.css'
                 alt={imageProps.params.description}
                 layout='fill'
                 objectFit='cover'
-                quality='50'
             />
             <div className={styles.description}>
                 <div>{imageProps.params.name}</div>

@@ -25,7 +25,7 @@ export async function getStaticProps({ params }) {
 
 export default function Home({postData}) {
   return (
-        <Layout>
+        <Layout home>
             <ImageBoard images={postData}/>
         </Layout>
     //   <div className={styles.container}>
