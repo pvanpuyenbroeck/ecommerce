@@ -4,7 +4,7 @@ import styles from '../styles/furnitureStyle.module.css'
 import Image from 'next/image'
 
 export async function getStaticPaths() {
-    const paths = getAllFurnitureIds()
+    const paths = await getAllFurnitureIds()
     return {
       paths,
       fallback: false
@@ -12,7 +12,7 @@ export async function getStaticPaths() {
   }
 
   export async function getStaticProps({ params }) {
-    const furnitureData = getFurnitureData(params.id);
+    const furnitureData = await getFurnitureData(params.id);
     return {
       props: {
         postData:furnitureData
@@ -28,7 +28,7 @@ export default function furnitureDetails({postData}){
         <div className={styles.furnitureContainer}>
             <div className={styles.fullImage}>
                 <Image
-                    src={'/img/furniture/' + postData.imgsrc}
+                    src={postData.imgsrc}
                     alt={postData.name}
                     layout='fill'
                     objectFit='cover'
