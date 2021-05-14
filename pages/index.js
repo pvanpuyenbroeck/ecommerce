@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import Header from '../components/header'
 import ImageBoard from '../components/imageBoard/imageBoard'
 import Layout from '../components/Layout';
-import {getAllfurnitureObjects} from '../lib/items';
+import {getAllfurnitureObjects, getFurnitureDataStrapi} from '../lib/items';
 
 // export async function getStaticPaths() {
 //     const paths = await getAllfurnitureIds();
@@ -16,6 +16,7 @@ import {getAllfurnitureObjects} from '../lib/items';
 
 export async function getStaticProps({ params }) {
     let furnitureItems = await getAllfurnitureObjects();
+    getFurnitureDataStrapi();
     return {
         props: {
             postData: furnitureItems,
